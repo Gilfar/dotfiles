@@ -1,0 +1,31 @@
+{
+  "window.titleBarStyle": "custom",
+  "window.zoomLevel": 2,
+  "editor.mouseWheelScrollSensitivity": 0.5,
+  "editor.rulers": [
+    80
+  ],
+  "editor.detectIndentation": false,
+  "editor.tabSize": 2,
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "workbench.colorTheme": "Solarized Dark",
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": true,
+  "python.linting.enabled": true,
+  "editor.fontFamily": "'Source Code Variable'",
+  "shellcheck.disableVersionCheck": true,
+  "editor.fontSize": 12,
+  "spellright.configurationScope": "user",
+  "spellright.language": [
+    "en_GB",
+    "en_US",
+    "pl_PL"
+  ],
+  "spellright.documentTypes": [
+    "markdown",
+    "latex",
+    "plaintext"
+  ],
+  "editor.formatOnSave": true
+}

@@ -1,0 +1,15 @@
+[gui]
+	tabsize = 2
+	fontui = -family \"DejaVu Sans\" -size 8 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family \"Source Code Variable\" -size 8 -weight normal -slant roman -underline 0 -overstrike 0
+	spellingdictionary = en
+[user]
+  # set in included config 
+[merge]
+	tool = p4merge
+[diff]
+	tool = p4merge
+[mergetool]
+	keepBackup = false
+[include]
+  path = ~/.gitconfig_local
