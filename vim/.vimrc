@@ -1,25 +1,51 @@
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 set nocompatible              " be iMproved, required
-filetype off                  " required
 set expandtab
 set tabstop=2
 set shiftwidth=2
+set termguicolors
+set number
+set hidden
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'itchyny/lightline.vim'
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-commentary'
-Plugin 'machakann/vim-sandwich'
-Plugin 'junegunn/vim-easy-align'
-Plugin 'Yggdroot/LeaderF'
-Plugin 'w0rp/ale'
+Plug 'lifepillar/vim-solarized8'
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-commentary'
+Plug 'machakann/vim-sandwich'
+Plug 'junegunn/vim-easy-align'
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+Plug 'w0rp/ale'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'ap/vim-buftabline'
 
-call vundle#end()            " required
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_start_level = 2
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=0  guibg=#073642
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd   ctermbg=10 guibg=#586e75
+
+call plug#end()
+
+colorscheme solarized8
+set background=dark
+
 filetype plugin indent on    " required
 syntax on
 set noshowmode
