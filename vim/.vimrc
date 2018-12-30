@@ -8,9 +8,7 @@ set nocompatible              " be iMproved, required
 set expandtab
 set tabstop=2
 set shiftwidth=2
-if &term =~ 'xterm'
-  set termguicolors
-endif
+set termguicolors
 set number
 set hidden
 
@@ -38,6 +36,8 @@ let g:deoplete#enable_at_startup = 1
 
 call plug#end()
 
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 colorscheme solarized8
 set background=dark
 
