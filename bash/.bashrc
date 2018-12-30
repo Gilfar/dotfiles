@@ -125,17 +125,21 @@ export PIP_REQUIRE_VIRTUALENV=true
 gpip() {
 	PIP_REQUIRE_VIRTUALENV="" pip "$@"
 }
+gpip3() {
+	PIP_REQUIRE_VIRTUALENV="" pip3 "$@"
+}
 
 alias pythonenv="source ~/projects/virtualenvs/pythonenv/bin/activate"
 alias python2env="source ~/projects/virtualenvs/python2env/bin/activate"
 
-alias gitk="sommelier -X --scale=0.7 --dpi=160 gitk"
-function git() {
-  case "$*" in
-    gui* ) shift 1; command sommelier -X --scale=0.7 --dpi=160 git gui "$@" ;;
-    * ) command git "$@" ;;
-  esac
-}
+if [ -n "$SOMMELIER_VERSION" ]; then
+  function git() {
+    case "$*" in
+      gui* ) shift 1; command sommelier -X --scale=0.5 --dpi=110 git gui "$@" ;;
+      * ) command git "$@" ;;
+    esac
+  }
+fi
 
 # Add ssh key to keychain
 eval "$(keychain -q --eval id_rsa)"

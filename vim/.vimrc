@@ -8,7 +8,9 @@ set nocompatible              " be iMproved, required
 set expandtab
 set tabstop=2
 set shiftwidth=2
-set termguicolors
+if &term =~ 'xterm'
+  set termguicolors
+endif
 set number
 set hidden
 
@@ -23,7 +25,6 @@ Plug 'machakann/vim-sandwich'
 Plug 'junegunn/vim-easy-align'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'w0rp/ale'
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ap/vim-buftabline'
 
 if has('nvim')
@@ -34,12 +35,6 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
-
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_auto_colors = 0
-let g:indent_guides_start_level = 2
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven  ctermbg=0  guibg=#073642
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd   ctermbg=10 guibg=#586e75
 
 call plug#end()
 
