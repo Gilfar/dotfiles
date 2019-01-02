@@ -147,7 +147,12 @@ eval "$(keychain -q --eval id_rsa)"
 source <(kubectl completion bash)
 
 if [ "$TILIX_ID" ] || [ "$VTE_VERSION" ]; then
-	source /etc/profile.d/vte.sh
+  if [ -f /etc/profile.d/vte.sh ]; then
+    source /etc/profile.d/vte.sh
+  fi
+  if [ -f /etc/profile.d/vte-2.91.sh ]; then
+    source /etc/profile.d/vte-2.91.sh
+  fi
 fi
 
 stty -ixon -ixoff

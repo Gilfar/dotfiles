@@ -1,0 +1,18 @@
+#! /bin/sh
+
+wid=$1
+class=$2
+instance=$3
+title=$(xdotool getwindowname "$wid")
+
+# debug
+# echo "$wid $class $instance $title" > /tmp/bspwm-external-rules
+
+if [ "$instance" = google-chrome ] ; then
+  case "$title" in
+    *"Tab Cache"*)
+      echo "matched" > /tmp/bspwm-external-matched
+      echo "hidden = on"
+      ;;
+  esac
+fi

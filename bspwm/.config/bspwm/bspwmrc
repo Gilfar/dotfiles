@@ -1,0 +1,43 @@
+#! /bin/sh
+
+xrdb -merge ~/.Xresources
+
+dex -ae bspwm
+
+compton &
+sxhkd &
+feh --bg-scale background.png
+setxkbmap -v pl
+env LOCKED_BY_SESSION_IDLE=true xautolock -time 5 -corners 000- -cornersize 30 -locker xsecurelock &
+
+bspc monitor ^1 -d I II III IV V
+bspc monitor ^2 -d VI VII VIII IX X
+
+bspc config top_padding         27
+bspc config border_width         2
+bspc config window_gap          12
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+bspc config click_to_focus       true
+
+bspc config external_rules_command "$HOME/.config/bspwm/external_rules"
+# bspc rule -a Gimp desktop='^8' state=floating follow=on
+# bspc rule -a Chrome desktop='^2'
+# bspc rule -a mplayer2 state=floating
+# bspc rule -a Kupfer.py focus=on
+# bspc rule -a Screenkey manage=off
+
+bspc config pointer_modifier mod4
+bspc config pointer_action1 move
+bspc config pointer_action2 resize_side
+bspc config pointer_action3 resize_corner
+
+if [ "$(command -v xrandr)x" != "x" ]; then
+  for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+    MONITOR=$m polybar --reload config &
+  done
+else
+  polybar --reload config &
+fi
