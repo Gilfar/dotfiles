@@ -21,6 +21,3 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-# Add local bin to PATH
-export PATH="$PATH:$HOME/.local/bin:$(go env GOPATH)/bin:$HOME/p4v-2018.3.1719707/bin"
-

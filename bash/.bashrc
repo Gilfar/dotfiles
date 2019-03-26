@@ -92,12 +92,12 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
+alias ll='ls -l'
+alias la='ls -A'
+alias l='ls -CF'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -119,7 +119,9 @@ if ! shopt -oq posix; then
 	fi
 fi
 
+export PROJECTS="$HOME/projects"
 export GOPATH="$HOME/gocode"
+export PATH="$PATH:$HOME/.local/bin:$HOME/bin:$GOPATH/bin:$HOME/p4v-2018.3.1719707/bin"
 
 export PIP_REQUIRE_VIRTUALENV=true
 gpip() {
@@ -132,6 +134,8 @@ gpip3() {
 alias pythonenv="source ~/projects/virtualenvs/pythonenv/bin/activate"
 alias python2env="source ~/projects/virtualenvs/python2env/bin/activate"
 
+export FZF_DEFAULT_COMMAND='fd --type f'
+
 if [ -n "$SOMMELIER_VERSION" ]; then
   function git() {
     case "$*" in
@@ -139,12 +143,17 @@ if [ -n "$SOMMELIER_VERSION" ]; then
       * ) command git "$@" ;;
     esac
   }
+  function som() {
+    command sommelier -X --scalre=0.5 --dpi=192 "$1"
+  }
 fi
 
 # Add ssh key to keychain
 eval "$(keychain -q --eval id_rsa)"
 
 source <(kubectl completion bash)
+
+eval "$(fasd --init auto)"
 
 if [ "$TILIX_ID" ] || [ "$VTE_VERSION" ]; then
   if [ -f /etc/profile.d/vte.sh ]; then
@@ -161,3 +170,5 @@ set -o noclobber
 shopt -s cmdhist
 
 complete -C ~/bin/terraform terraform
+"$PROJECTS"/kubectx/completion/kubectx.bash
+"$PROJECTS"/kubectx/completion/kubens.bash
