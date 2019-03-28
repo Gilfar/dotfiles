@@ -153,8 +153,6 @@ eval "$(keychain -q --eval id_rsa)"
 
 source <(kubectl completion bash)
 
-eval "$(fasd --init auto)"
-
 if [ "$TILIX_ID" ] || [ "$VTE_VERSION" ]; then
   if [ -f /etc/profile.d/vte.sh ]; then
     source /etc/profile.d/vte.sh
@@ -172,3 +170,5 @@ shopt -s cmdhist
 complete -C ~/bin/terraform terraform
 "$PROJECTS"/kubectx/completion/kubectx.bash
 "$PROJECTS"/kubectx/completion/kubens.bash
+
+eval "$(fasd --init auto)"
