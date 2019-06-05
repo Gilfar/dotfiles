@@ -144,7 +144,7 @@ if [ -n "$SOMMELIER_VERSION" ]; then
     esac
   }
   function som() {
-    command sommelier -X --scalre=0.5 --dpi=192 "$1"
+    command sommelier -X --scale=0.5 --dpi=192 "$1"
   }
 fi
 
