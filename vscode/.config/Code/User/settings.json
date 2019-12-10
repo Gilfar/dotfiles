@@ -26,5 +26,10 @@
     "latex",
     "plaintext"
   ],
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "editor.cursorSurroundingLines": 5,
+  "[dockerfile]": {
+    "editor.defaultFormatter": "PeterJausovec.vscode-docker"
+  },
+  "workbench.iconTheme": "vscode-icons"
 }

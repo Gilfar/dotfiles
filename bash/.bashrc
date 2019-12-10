@@ -134,7 +134,7 @@ gpip3() {
 alias pythonenv="source ~/projects/virtualenvs/pythonenv/bin/activate"
 alias python2env="source ~/projects/virtualenvs/python2env/bin/activate"
 
-export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_DEFAULT_COMMAND='fdfind --type f'
 
 if [ -n "$SOMMELIER_VERSION" ]; then
   function git() {
